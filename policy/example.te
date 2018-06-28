@@ -1,0 +1,3 @@
+module example.te
+require {}
+

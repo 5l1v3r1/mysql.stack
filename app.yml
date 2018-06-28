@@ -1,0 +1,38 @@
+target:
+  os: os.linux.csos
+  capabilities:
+    - security.lsm.selinux
+  dependencies:
+    - dns
+
+containers:
+  - image: mysql:5.7.14
+    name: mysql
+    version: version
+    digest:
+      sha256: 42692471e4d351bd2970aee690345d9209f4c52cdaed7bea1b72ab9088c7f584
+
+    policies:
+      - policy/example.te
+
+    resources:
+      limit:
+        cpu: 250m # == 1000m
+        memory: 256Mi # E, P, T, G, M, K, Ei, Pi, Ti, Gi, Mi, Ki
+      request:
+        cpu: 100m
+        memory: 128Mi
+
+    ports:
+      - protocol: TCP
+        port: 3306
+        
+    env:
+      - name: MYSQL_ALLOW_EMPTY_PASSWORD
+        value: true
+      - name: MYSQL_USER
+        value: ""
+      - name: MYSQL_DATABASE
+        value: ""
+      - name: MYSQL_ROOT_PASSWORD
+     
