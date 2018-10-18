@@ -3,17 +3,22 @@ app:
     en: MySQL
   description:
     en: MySQL is a popular database server used by companies such as Wikipedia, Facebook and Google
-  icon: images/mysql_image1.png
-  banner: images/example_banner.png
+  icon: images/banner.png
+  banner: images/banner.png
+  bannercolors:
+    - '#315f82'
+    - '#cb892d'
+    - '#ffffff'  
   screenshots:
     - images/screenshot_1.png
-    - images/screenshot_2.png
+    - images/screenshot_2.jpg
   licenses:
     - apache-2.0
   categories:
     - data.storage
   tags:
-    - mysql, Data
+    - data
+    - sql
   docs:
     en:
       - title: Overview

@@ -5,10 +5,12 @@ target:
   dependencies:
     - dns
 
+replicationType: "deployment"
+
 containers:
   - image: mysql:5.7.14
     name: mysql
-    version: version
+    version: 5.7.14
     digest:
       sha256: 42692471e4d351bd2970aee690345d9209f4c52cdaed7bea1b72ab9088c7f584
 
@@ -23,6 +25,12 @@ containers:
         cpu: 100m
         memory: 128Mi
 
+    services:
+      - type: LoadBalancer
+        ports:
+        - protocol: TCP
+          port: 3306
+
     ports:
       - protocol: TCP
         port: 3306
@@ -31,8 +39,11 @@ containers:
       - name: MYSQL_ALLOW_EMPTY_PASSWORD
         value: true
       - name: MYSQL_USER
-        value: ""
+        value: mysql-config{database.user}
+        type: config
       - name: MYSQL_DATABASE
-        value: ""
+        value: mysql-config{database.db}
+        type: config
       - name: MYSQL_ROOT_PASSWORD
-     
+        value: mysql-secrets{database.password}
+        type: secret
