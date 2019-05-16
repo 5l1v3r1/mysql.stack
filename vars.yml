@@ -1,0 +1,19 @@
+vars:
+    # types: text, map, variables, labels, slider, selector, volumeClaim, cronSimple, cronAdvanced, select, services, advanced, secrets, checkbox
+  database_db:
+    display: default database name
+    type: string
+    description: The default database name
+    default: mysql
+
+  root_password:
+    display: Root Password
+    type: password
+    description: Type the root password here
+    default:
+
+  database_user:
+    display: Initial User
+    type: string
+    description: Specify the first user to create
+    default:

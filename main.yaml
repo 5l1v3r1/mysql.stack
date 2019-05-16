@@ -1,4 +1,6 @@
-version: 0.1.0
+version: 0.1.1
 includes:
   - appstore.yml
   - app.yml
+  - vars.yml
+  

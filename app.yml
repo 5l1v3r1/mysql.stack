@@ -8,11 +8,11 @@ target:
 replicationType: "deployment"
 
 containers:
-  - image: mysql:5.7.14
+  - image: mysql:8
     name: mysql
-    version: 5.7.14
+    version: 8.0.16
     digest:
-      sha256: 42692471e4d351bd2970aee690345d9209f4c52cdaed7bea1b72ab9088c7f584
+      sha256: 711df5b93720801b3a727864aba18c2ae46c07f9fe33d5ce9c1f5cbc2c035101
 
     policies:
       - policy/example.te
@@ -47,3 +47,17 @@ containers:
       - name: MYSQL_ROOT_PASSWORD
         value: mysql-secrets{database.password}
         type: secret
+
+configs:
+  - name: mysql-config
+    data:
+    - key: database.db
+      data: ${database_db}
+    - key: database.user
+      data: ${database_user}
+
+secrets:
+  - name: mysql-secrets
+    data:
+    - key: database.password # password must match what is in 'database.password'
+      data: ${root_password} #postgres://drone:db-pw-change-me.secret@postgres-service:5432/postgres?sslmode=disable
