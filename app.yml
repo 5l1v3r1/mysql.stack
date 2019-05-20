@@ -8,7 +8,7 @@ target:
 replicationType: "deployment"
 
 containers:
-  - image: mysql:8
+  - image: mysql
     name: mysql
     version: 8.0.16
     digest:
